@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Assemble with NASM",
+            "type": "shell",
+            "command": "nasm",
+            "args": [
+                "-f", "elf64",
+                "${file}",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}.o"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Assemble the current file using NASM."
+        },
+        {
+            "label": "Link with ld",
+            "type": "shell",
+            "command": "ld",
+            "args": [
+                "${fileDirname}/${fileBasenameNoExtension}.o",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "problemMatcher": [],
+            "detail": "Link the object file using ld."
+        }
+    ]
+}
